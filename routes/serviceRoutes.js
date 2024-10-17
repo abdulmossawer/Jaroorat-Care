@@ -56,12 +56,11 @@ router.put("/update/:id", async (req, res) => {
     return res.status(400).json({ message: error });
   }
 
-  console.log("Received ID:", req.params.id); // Log the received ID
-
+  console.log("Received ID:", req.params.id); 
   try {
     const service = await Service.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
-      runValidators: true, // Optional: to ensure validators run on the update
+      runValidators: true, 
     });
     if (!service) {
       return res.status(404).json({ message: "Service not found" });
